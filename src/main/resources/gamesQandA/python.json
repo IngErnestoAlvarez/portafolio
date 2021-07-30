@@ -1,0 +1,23 @@
+{
+  "questions": {
+    "1": {
+      "question": "What's the syntax to create a non empty key:value dictionary?",
+      "answer1": {
+        "correct": false,
+        "answer": "myDict = dict(key1, value1, key2, value2)"
+      },
+      "answer2": {
+        "correct": true,
+        "answer": "myDict = {key1 : value1, key2: value2}"
+      },
+      "answer3": {
+        "correct": false,
+        "answer": "myDict = {key1, value1, key2, value2"
+      },
+      "answer4": {
+        "correct": false,
+        "answer": "myDict = dict(key1 : value1, key2 : value2)"
+      }
+    }
+  }
+}
