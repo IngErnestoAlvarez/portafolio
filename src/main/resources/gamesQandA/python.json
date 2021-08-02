@@ -20,6 +20,23 @@
           "answer": "myDict = dict(key1 : value1, key2 : value2)"
         }
       ]
+    },
+    {
+      "question": "How's the right way to create a lambda expression?",
+      "answers": [
+        {
+          "correct": true,
+          "answer": "lambda x: x*2"
+        },
+        {
+          "correct": false,
+          "answer": "lambda x -> x*2"
+        },
+        {
+          "correct": false,
+          "answer": "lambda :x x*2"
+        }
+      ]
     }
   ]
 }

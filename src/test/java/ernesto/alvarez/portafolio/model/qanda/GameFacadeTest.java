@@ -60,6 +60,7 @@ public class GameFacadeTest {
 
         game.selectTheAnswer(1);
 
+        assertEquals("How's the right way to create a lambda expression?", game.getActualQuestion());
     }
 
 }
