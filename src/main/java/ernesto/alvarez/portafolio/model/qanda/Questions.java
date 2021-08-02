@@ -1,16 +1,26 @@
 package ernesto.alvarez.portafolio.model.qanda;
 
-import java.util.Map;
+import java.util.List;
 
 public class Questions {
 
+    private List<Question> questions;
+
     public static class Question {
+
+        private String question;
+        List<Answer> answers;
 
         public static class Answer {
             private Boolean correct;
             private String answer;
 
             public Answer() {
+            }
+
+            public Answer(boolean correct, String answer) {
+                this.correct = Boolean.valueOf(correct);
+                this.answer = answer;
             }
 
             public Boolean getCorrect() {
@@ -27,12 +37,6 @@ public class Questions {
 
         }
 
-        private String question;
-        private Answer answer1;
-        private Answer answer2;
-        private Answer answer3;
-        private Answer answer4;
-
         public Question() {
 
         }
@@ -41,51 +45,24 @@ public class Questions {
             return question;
         }
 
-        public Answer getAnswer4() {
-            return answer4;
-        }
-
-        public void setAnswer4(Answer answer4) {
-            this.answer4 = answer4;
-        }
-
-        public Answer getAnswer3() {
-            return answer3;
-        }
-
-        public void setAnswer3(Answer answer3) {
-            this.answer3 = answer3;
-        }
-
-        public Answer getAnswer2() {
-            return answer2;
-        }
-
-        public void setAnswer2(Answer answer2) {
-            this.answer2 = answer2;
-        }
-
-        public Answer getAnswer1() {
-            return answer1;
-        }
-
-        public void setAnswer1(Answer answer1) {
-            this.answer1 = answer1;
+        public Answer getAnswer(int number) {
+            return answers.get(number);
         }
 
         public void setQuestion(String question) {
             this.question = question;
         }
 
+        public void setAnswers(List<Answer> answers) {
+            this.answers = answers;
+        }
     }
 
-    private Map<String, Question> questions;
-
-    public Map<String, Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Map<String, Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 

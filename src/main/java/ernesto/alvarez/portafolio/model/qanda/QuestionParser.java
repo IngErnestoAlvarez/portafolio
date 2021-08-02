@@ -2,7 +2,7 @@ package ernesto.alvarez.portafolio.model.qanda;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.Map;
+import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -31,10 +31,22 @@ public class QuestionParser {
     }
 
     public String getQuestion(int number) {
-        Map<String, Question> aux = questions.getQuestions();
-        Question q = aux.get(Integer.toString(number));
+        List<Question> aux = questions.getQuestions();
+        Question q = aux.get(number);
 
         return q.getQuestion();
+    }
 
+    public String getAnswer(int question, int answer) {
+        List<Question> aux = questions.getQuestions();
+        return aux.get(question).getAnswer(answer).getAnswer();
+    }
+
+    public boolean isAnswerCorrect(int question, int answer) {
+        List<Question> aux = questions.getQuestions();
+        if (aux.get(question).getAnswer(answer).getCorrect()) {
+            return true;
+        }
+        return false;
     }
 }
