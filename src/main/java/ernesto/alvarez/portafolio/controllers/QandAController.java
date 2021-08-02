@@ -67,4 +67,14 @@ public class QandAController {
         qanda.reset();
         return "score";
     }
+
+    @PostMapping("/game/login")
+    public String login(@RequestParam String name, @RequestParam int score, Model model) {
+        GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
+        qanda.createUser(name, score);
+
+        model.addAttribute("users", qanda.getUsers());
+
+        return "scores";
+    }
 }
