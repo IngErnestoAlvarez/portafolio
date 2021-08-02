@@ -20,22 +20,26 @@ public class QandAController {
     @Autowired
     private ApplicationContext context;
 
+    private static final String QANDA_FILE = "qanda";
+    private static final String QUESTION_ATTR = "question";
+    private static final String ANSWERS_ATTR = "answers";
+
     @GetMapping("/game")
     public String game(@RequestParam String game, Model model) {
         GameFacade qanda = context.getBean(GameFacade.class);
         model.addAttribute("game", game);
-        model.addAttribute("question", qanda.getActualQuestion());
-        model.addAttribute("answers", qanda.getAnswers());
-        return "qanda";
+        model.addAttribute(QUESTION_ATTR, qanda.getActualQuestion());
+        model.addAttribute(ANSWERS_ATTR, qanda.getAnswers());
+        return QANDA_FILE;
     }
 
     @GetMapping("/game/{id}")
     public String select(@PathVariable int id, Model model) {
         GameFacade qanda = context.getBean(GameFacade.class);
         qanda.selectTheAnswer(id);
-        model.addAttribute("question", qanda.getActualQuestion());
-        model.addAttribute("answers", qanda.getAnswers());
-        return "qanda";
+        model.addAttribute(QUESTION_ATTR, qanda.getActualQuestion());
+        model.addAttribute(ANSWERS_ATTR, qanda.getAnswers());
+        return QANDA_FILE;
     }
 
     @PostMapping("/game/reset")
@@ -43,8 +47,8 @@ public class QandAController {
         GameFacade qanda = context.getBean(GameFacade.class);
         qanda.reset();
 
-        model.addAttribute("question", qanda.getActualQuestion());
-        model.addAttribute("answers", qanda.getAnswers());
-        return "qanda";
+        model.addAttribute(QUESTION_ATTR, qanda.getActualQuestion());
+        model.addAttribute(ANSWERS_ATTR, qanda.getAnswers());
+        return QANDA_FILE;
     }
 }
