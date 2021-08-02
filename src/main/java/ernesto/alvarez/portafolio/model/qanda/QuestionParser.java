@@ -49,4 +49,8 @@ public class QuestionParser {
         }
         return false;
     }
+
+    public int size() {
+        return questions.getQuestions().size();
+    }
 }

@@ -37,7 +37,7 @@ public class GameFacade {
     }
 
     public boolean areThereAnyMoreQuestions() {
-        return true;
+        return qp.size() > actualQuestion;
     }
 
     public int getScore() {
