@@ -13,8 +13,10 @@
 
 
 <body>
-
-    <div class="table-wrapper" style="margin-top: 3cm;">
+    <form action="/game/reset" method="post" style="margin-top: 1cm;">
+        <button type="submit">Reset</button>
+    </form>
+    <div class="table-wrapper" style="margin-top: 1cm;">
         <table>
             <thead>
                 <tr>
@@ -30,7 +32,7 @@
                             <code>[[${answer}]]</code>
                         </td>
                         <td>
-                            <a href="#" class="button">Select</a>
+                            <a th:href="@{/game/{id}(id=${answerStat.index})}" class="button">Select</a>
                         </td>
                     </tr>
                 </th:block>

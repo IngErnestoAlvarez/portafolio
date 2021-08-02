@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
-@Scope("prototype")
+@Scope("session")
 public class GameFacade {
     private QuestionParser qp;
     private int actualQuestion;
@@ -14,8 +14,7 @@ public class GameFacade {
 
     public GameFacade(TypeOfQandA language) {
         this.qp = new QuestionParser(language);
-        actualQuestion = 0;
-        score = 0;
+        reset();
     }
 
     public GameFacade() {
@@ -30,8 +29,11 @@ public class GameFacade {
         if (qp.isAnswerCorrect(actualQuestion, answer)) {
             score++;
         }
-
         actualQuestion++;
+
+        if (!areThereAnyMoreQuestions()) {
+            reset();
+        }
     }
 
     public String getAnswer(int answer) {
@@ -48,5 +50,10 @@ public class GameFacade {
 
     public List<String> getAnswers() {
         return qp.getAnswers(actualQuestion);
+    }
+
+    public void reset() {
+        score = 0;
+        actualQuestion = 0;
     }
 }

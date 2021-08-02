@@ -63,4 +63,11 @@ public class GameFacadeTest {
         assertEquals("How's the right way to create a lambda expression?", game.getActualQuestion());
     }
 
+    @Test
+    void sizeIsCorrect() {
+        GameFacade game = gameFacadeProvider.getObject();
+
+        assertEquals(true, game.areThereAnyMoreQuestions());
+    }
+
 }
