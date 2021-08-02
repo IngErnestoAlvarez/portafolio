@@ -21,7 +21,7 @@ public class QandAController {
     public String game(@RequestParam String game, Model model) {
         model.addAttribute("game", game);
         model.addAttribute("question", qanda.getActualQuestion());
-        model.addAttribute("answer1", qanda.getAnswer(0));
+        model.addAttribute("answers", qanda.getAnswers());
         return "qanda";
     }
 }

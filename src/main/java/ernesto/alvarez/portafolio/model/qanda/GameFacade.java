@@ -1,5 +1,7 @@
 package ernesto.alvarez.portafolio.model.qanda;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +44,9 @@ public class GameFacade {
 
     public int getScore() {
         return score;
+    }
+
+    public List<String> getAnswers() {
+        return qp.getAnswers(actualQuestion);
     }
 }

@@ -1,6 +1,8 @@
 package ernesto.alvarez.portafolio.model.qanda;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Questions {
 
@@ -55,6 +57,10 @@ public class Questions {
 
         public void setAnswers(List<Answer> answers) {
             this.answers = answers;
+        }
+
+        public List<String> getAnswers() {
+            return this.answers.stream().map(s -> s.getAnswer()).collect(Collectors.toList());
         }
     }
 
