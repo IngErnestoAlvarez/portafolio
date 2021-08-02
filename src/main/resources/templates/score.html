@@ -1,0 +1,17 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Dimension by HTML5 UP</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <noscript>
+        <link rel=" stylesheet" th:href="@{/css/noscript.css}" />
+    </noscript>
+</head>
+
+<body>
+    <h1 style="margin-top: 2cm;">Your score is: [[${score}]] </h1>
+    <a href="/game?game=Python" class="button" style="margin-top: 1cm;">Retry</a>
+</body>

@@ -30,10 +30,6 @@ public class GameFacade {
             score++;
         }
         actualQuestion++;
-
-        if (!areThereAnyMoreQuestions()) {
-            reset();
-        }
     }
 
     public String getAnswer(int answer) {

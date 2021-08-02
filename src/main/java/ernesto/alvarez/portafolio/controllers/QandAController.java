@@ -23,10 +23,11 @@ public class QandAController {
     private static final String QANDA_FILE = "qanda";
     private static final String QUESTION_ATTR = "question";
     private static final String ANSWERS_ATTR = "answers";
+    private static final String PYTHON_BEAN = "python";
 
     @GetMapping("/game")
     public String game(@RequestParam String game, Model model) {
-        GameFacade qanda = context.getBean(GameFacade.class);
+        GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         model.addAttribute("game", game);
         model.addAttribute(QUESTION_ATTR, qanda.getActualQuestion());
         model.addAttribute(ANSWERS_ATTR, qanda.getAnswers());
@@ -35,20 +36,35 @@ public class QandAController {
 
     @GetMapping("/game/{id}")
     public String select(@PathVariable int id, Model model) {
-        GameFacade qanda = context.getBean(GameFacade.class);
+        GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         qanda.selectTheAnswer(id);
+
+        if (!qanda.areThereAnyMoreQuestions()) {
+            return "redirect:score";
+        }
+
         model.addAttribute(QUESTION_ATTR, qanda.getActualQuestion());
         model.addAttribute(ANSWERS_ATTR, qanda.getAnswers());
         return QANDA_FILE;
     }
 
-    @PostMapping("/game/reset")
+    @PostMapping("/game")
     public String reset(Model model) {
-        GameFacade qanda = context.getBean(GameFacade.class);
+        GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         qanda.reset();
 
         model.addAttribute(QUESTION_ATTR, qanda.getActualQuestion());
         model.addAttribute(ANSWERS_ATTR, qanda.getAnswers());
         return QANDA_FILE;
+    }
+
+    @GetMapping("/game/score")
+    public String score(Model model) {
+        GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
+
+        model.addAttribute("score", qanda.getScore());
+
+        qanda.reset();
+        return "score";
     }
 }
