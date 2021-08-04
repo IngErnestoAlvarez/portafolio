@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ernesto.alvarez.portafolio.model.qanda.GameFacade;
@@ -15,6 +16,7 @@ import ernesto.alvarez.portafolio.model.qanda.GameFacade;
  * QandAController
  */
 @Controller
+@RequestMapping("/game")
 public class QandAController {
 
     @Autowired
@@ -25,7 +27,7 @@ public class QandAController {
     private static final String ANSWERS_ATTR = "answers";
     private static final String PYTHON_BEAN = "python";
 
-    @GetMapping("/game")
+    @GetMapping("")
     public String game(@RequestParam String game, Model model) {
         GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         model.addAttribute("game", game);
@@ -34,7 +36,7 @@ public class QandAController {
         return QANDA_FILE;
     }
 
-    @GetMapping("/game/{id}")
+    @GetMapping("/{id}")
     public String select(@PathVariable int id, Model model) {
         GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         qanda.selectTheAnswer(id);
@@ -48,7 +50,7 @@ public class QandAController {
         return QANDA_FILE;
     }
 
-    @PostMapping("/game")
+    @PostMapping("")
     public String reset(Model model) {
         GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         qanda.reset();
@@ -58,7 +60,7 @@ public class QandAController {
         return QANDA_FILE;
     }
 
-    @GetMapping("/game/score")
+    @GetMapping("/score")
     public String score(Model model) {
         GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
 
@@ -68,7 +70,7 @@ public class QandAController {
         return "score";
     }
 
-    @PostMapping("/game/login")
+    @PostMapping("/login")
     public String login(@RequestParam String name, @RequestParam int score, Model model) {
         GameFacade qanda = context.getBean(PYTHON_BEAN, GameFacade.class);
         qanda.createUser(name, score);

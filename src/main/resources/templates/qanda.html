@@ -9,13 +9,19 @@
     <noscript>
         <link rel=" stylesheet" th:href="@{/css/noscript.css}" />
     </noscript>
+    <script type="text/javascript" th:src="@{/js/timer.js}"></script>
 </head>
 
 
 <body>
-    <form action="/game" method="post" style="margin-top: 1cm;">
-        <button type="submit">Reset</button>
-    </form>
+    <span>
+        <form action="/game" method="post" style="margin-top: 1cm;">
+            <button type="submit">Reset</button>
+        </form>
+        <div class="circle">
+            <span id="display">00:00:00</span>
+        </div>
+    </span>
     <div class="table-wrapper" style="margin-top: 1cm;">
         <table>
             <thead>
