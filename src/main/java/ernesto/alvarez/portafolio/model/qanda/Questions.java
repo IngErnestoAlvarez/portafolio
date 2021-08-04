@@ -1,28 +1,27 @@
 package ernesto.alvarez.portafolio.model.qanda;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Questions {
 
-    private List<Question> questions;
+    private List<Question> allQuestions;
 
     public static class Question {
 
-        private String question;
+        private String myQuestion;
         List<Answer> answers;
 
         public static class Answer {
             private Boolean correct;
-            private String answer;
+            private String theAnswer;
 
             public Answer() {
             }
 
             public Answer(boolean correct, String answer) {
                 this.correct = Boolean.valueOf(correct);
-                this.answer = answer;
+                this.theAnswer = answer;
             }
 
             public Boolean getCorrect() {
@@ -34,17 +33,13 @@ public class Questions {
             }
 
             public String getAnswer() {
-                return answer;
+                return theAnswer;
             }
 
         }
 
-        public Question() {
-
-        }
-
         public String getQuestion() {
-            return question;
+            return myQuestion;
         }
 
         public Answer getAnswer(int number) {
@@ -52,7 +47,7 @@ public class Questions {
         }
 
         public void setQuestion(String question) {
-            this.question = question;
+            this.myQuestion = question;
         }
 
         public void setAnswers(List<Answer> answers) {
@@ -65,11 +60,11 @@ public class Questions {
     }
 
     public List<Question> getQuestions() {
-        return questions;
+        return allQuestions;
     }
 
     public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+        this.allQuestions = questions;
     }
 
 }
