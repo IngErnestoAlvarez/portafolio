@@ -5,23 +5,23 @@ import java.util.stream.Collectors;
 
 public class Questions {
 
-    private List<Question> allQuestions;
+    private List<Question> questions;
 
     public static class Question {
 
-        private String myQuestion;
+        private String question;
         List<Answer> answers;
 
         public static class Answer {
             private Boolean correct;
-            private String theAnswer;
+            private String answer;
 
             public Answer() {
             }
 
             public Answer(boolean correct, String answer) {
                 this.correct = Boolean.valueOf(correct);
-                this.theAnswer = answer;
+                this.answer = answer;
             }
 
             public Boolean getCorrect() {
@@ -33,13 +33,17 @@ public class Questions {
             }
 
             public String getAnswer() {
-                return theAnswer;
+                return answer;
             }
 
         }
 
+        public Question() {
+
+        }
+
         public String getQuestion() {
-            return myQuestion;
+            return question;
         }
 
         public Answer getAnswer(int number) {
@@ -47,7 +51,7 @@ public class Questions {
         }
 
         public void setQuestion(String question) {
-            this.myQuestion = question;
+            this.question = question;
         }
 
         public void setAnswers(List<Answer> answers) {
@@ -60,11 +64,11 @@ public class Questions {
     }
 
     public List<Question> getQuestions() {
-        return allQuestions;
+        return questions;
     }
 
     public void setQuestions(List<Question> questions) {
-        this.allQuestions = questions;
+        this.questions = questions;
     }
 
 }
